@@ -2,7 +2,8 @@
 public class TekstKahendsysteemi {
 
 	public static String messageKahendsysteemi(String s) {
-		//teen stringi baidimassiiviks
+		//lisan algus ja lõpu sümbolid ning teen stringi baidimassiiviks
+		s = "¤" + s + "~";
 		byte[] bytes = s.getBytes();
 		StringBuilder binary = new StringBuilder();
 		for (byte b : bytes) {
