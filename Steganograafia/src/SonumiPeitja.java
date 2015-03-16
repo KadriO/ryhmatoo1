@@ -26,14 +26,17 @@ public class SonumiPeitja {
 		this.sonum = sonum;
 	}
 
-	public void peidaSonumPunasesse() {
+	public boolean peidaSonumPunasesse() {
+		// tagastab true, kui sõnumi punasesse peitmine õnnestub
+		// tagastab false, kui sõnum on liiga pikk
 		int laius = pikslid[0].length;
 		int korgus = pikslid.length;
 		
 		String sonumKahendSysteemis = TekstKahendsysteemi.messageKahendsysteemi(sonum);
 		
 		if (laius * korgus / 8 < sonumKahendSysteemis.length()) {
-			System.out.println("S�num on liiga pikk!");
+			System.out.println("Sõnum on liiga pikk!");
+			return false;
 		}
 
 		String[] sonumiMassiiv = sonumKahendSysteemis.split(" ");
@@ -59,5 +62,6 @@ public class SonumiPeitja {
 				pikslid[rida][veerg] = muudetudPiksel.getRGB();
 			}
 		}
+		return true;
 	}
 }

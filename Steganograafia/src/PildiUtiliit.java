@@ -1,8 +1,6 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
@@ -38,10 +36,11 @@ public class PildiUtiliit {
 			} 
 		}
 		//Uue pildifaili nimetamine ja salvestamine
-		Path path = Paths.get(failiNimi);
-		String lyhikeFailiNimi = path.getFileName().toString();
+	
+		File fail = new File(failiNimi);
+		String lyhikeFailiNimi = fail.getName();
 		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
-		File tulemusFail = new File(path.getParent().toString(), "krypteeritud_" + lyhikeFailiNimi);
+		File tulemusFail = new File(fail.getParent(), "krypteeritud_" + lyhikeFailiNimi);
 		ImageIO.write(pilt, failiLaiend, tulemusFail);
 	}
 }
