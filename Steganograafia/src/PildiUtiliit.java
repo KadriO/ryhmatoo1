@@ -6,17 +6,17 @@ import javax.imageio.ImageIO;
 
 public class PildiUtiliit {
 
-	// Meetod koostab pildi pikslitest kahemııtmelise massiivi
+	// Meetod koostab pildi pikslitest kahem√µ√µtmelise massiivi
 	public static int[][] piltPiksliteks(String failiNimi) throws IOException {
 		File fail = new File(failiNimi);
 		BufferedImage pilt = ImageIO.read(fail);
 		int laius = pilt.getWidth();
 		int korgus = pilt.getHeight();
-		//Kahemııtmelise pikslite massiivi koostamine
+		//Kahem√µ√µtmelise pikslite massiivi koostamine
 		int[][] pikslid = new int[korgus][laius];
 		for (int y = 0; y < korgus; y++) {
 			int[] pikslirida = new int[laius];
-			//Lisab igasse sisemisse massiivi ¸he pildirea pikslite RGB v‰‰rtuse
+			//Lisab igasse sisemisse massiivi √ºhe pildirea pikslite RGB v√§√§rtuse
 			for (int x = 0; x < laius; x++) {
 				pikslirida[x] = pilt.getRGB(x, y);
 			}
@@ -28,7 +28,7 @@ public class PildiUtiliit {
 	public static void salvestaPikslidPildina(int[][] pikslid, String failiNimi) throws IOException {
 		int laius = pikslid[0].length;
 		int korgus = pikslid.length;
-		//Pikslite RGB v‰‰rtustest pildi koostamine
+		//Pikslite RGB v√§√§rtustest pildi koostamine
 		BufferedImage pilt = new BufferedImage(laius, korgus, BufferedImage.TYPE_INT_ARGB);
 		for(int y=0; y<korgus; y++){
 			for(int x=0; x<laius; x++){
@@ -39,7 +39,7 @@ public class PildiUtiliit {
 		String lyhikeFailiNimi = failiNimi.substring(failiNimi.lastIndexOf("\\") + 1);
 		String failiTee = failiNimi.substring(0, failiNimi.lastIndexOf("\\") + 1);
 		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
-		File tulemusFail = new File(failiTee + "kr¸pteeritud_" + lyhikeFailiNimi);
+		File tulemusFail = new File(failiTee + "kr√ºpteeritud_" + lyhikeFailiNimi);
 		ImageIO.write(pilt, failiLaiend, tulemusFail);		
 	}
 }

@@ -33,7 +33,7 @@ public class SonumiPeitja {
 		String sonumKahendSysteemis = TekstKahendsysteemi.messageKahendsysteemi(sonum);
 		
 		if (laius * korgus / 8 < sonumKahendSysteemis.length()) {
-			System.out.println("Sõnum on liiga pikk!");
+			System.out.println("SÃµnum on liiga pikk!");
 		}
 
 		String[] sonumiMassiiv = sonumKahendSysteemis.split(" ");
