@@ -5,9 +5,33 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class PildiUtiliit {
+	
+	private String failiNimi;
+	private int[][] pikslid;
+	
+	public PildiUtiliit(String failiNimi, int[][] pikslid) {
+		super();
+		this.failiNimi = failiNimi;
+		this.pikslid = pikslid;
+	}
+	public PildiUtiliit() {
+	}
+
+	public String getFailiNimi() {
+		return failiNimi;
+	}
+	public void setFailiNimi(String failiNimi) {
+		this.failiNimi = failiNimi;
+	}
+	public int[][] getPikslid() {
+		return pikslid;
+	}
+	public void setPikslid(int[][] pikslid) {
+		this.pikslid = pikslid;
+	}
 
 	// Meetod koostab pildi pikslitest kahemõõtmelise massiivi
-	public static int[][] piltPiksliteks(String failiNimi) throws IOException {
+	public int[][] piltPiksliteks(String failiNimi) throws IOException {
 		File fail = new File(failiNimi);
 		BufferedImage pilt = ImageIO.read(fail);
 		int laius = pilt.getWidth();
@@ -25,7 +49,7 @@ public class PildiUtiliit {
 		return pikslid;
 	}
 	
-	public static void salvestaPikslidPildina(int[][] pikslid, String failiNimi) throws IOException {
+	public void salvestaPikslidPildina(int[][] pikslid, String failiNimi) throws IOException {
 		int laius = pikslid[0].length;
 		int korgus = pikslid.length;
 		//Pikslite RGB väärtustest pildi koostamine
@@ -33,13 +57,14 @@ public class PildiUtiliit {
 		for(int y=0; y<korgus; y++){
 			for(int x=0; x<laius; x++){
 				pilt.setRGB(x, y, pikslid[y][x]);
-			}
+			} 
 		}
 		//Uue pildifaili nimetamine ja salvestamine
-		String lyhikeFailiNimi = failiNimi.substring(failiNimi.lastIndexOf("\\") + 1);
-		String failiTee = failiNimi.substring(0, failiNimi.lastIndexOf("\\") + 1);
+	
+		File fail = new File(failiNimi);
+		String lyhikeFailiNimi = fail.getName();
 		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
-		File tulemusFail = new File(failiTee + "krüpteeritud_" + lyhikeFailiNimi);
-		ImageIO.write(pilt, failiLaiend, tulemusFail);		
+		File tulemusFail = new File(fail.getParent(), "krypteeritud_" + lyhikeFailiNimi);
+		ImageIO.write(pilt, failiLaiend, tulemusFail);
 	}
 }
