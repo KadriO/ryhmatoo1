@@ -9,10 +9,9 @@ public class PildiUtiliit {
 	private String failiNimi;
 	private int[][] pikslid;
 	
-	public PildiUtiliit(String failiNimi, int[][] pikslid) {
+	public PildiUtiliit(String failiNimi) {
 		super();
 		this.failiNimi = failiNimi;
-		this.pikslid = pikslid;
 	}
 	public PildiUtiliit() {
 	}

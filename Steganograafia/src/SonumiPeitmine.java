@@ -14,16 +14,17 @@ public class SonumiPeitmine {
 			File fail = new File(failiNimi);
 			
 			if (fail.exists()) {
-				int[][] piltPikslitena = PildiUtiliit.piltPiksliteks(failiNimi);
+				PildiUtiliit p1 = new PildiUtiliit(failiNimi);
+				
+				int[][] piltPikslitena = p1.piltPiksliteks(failiNimi);
 				SonumiPeitja sonumiPeitja = new SonumiPeitja(piltPikslitena,
 						sonum);
 				boolean onnestus = sonumiPeitja.peidaSonumPunasesse();
 				if (onnestus) {
 					System.out.println("Peidan sõnumi pilti.");
-					PildiUtiliit.salvestaPikslidPildina(
+					p1.salvestaPikslidPildina(
 							sonumiPeitja.getPikslid(), failiNimi);
 				}
-				
 				sc.close();
 				break;
 			} else {
