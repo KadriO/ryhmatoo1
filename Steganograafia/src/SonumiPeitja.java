@@ -35,9 +35,6 @@ public class SonumiPeitja {
 		
 		String sonumKahendSysteemis = TekstKahendsysteemi.messageKahendsysteemi(sonum);
 		
-		//sõnumi pikkus randomi töötamise kontrolliks (koos syso'ga ära kustutada)
-		System.out.println(sonumKahendSysteemis);
-		
 		if (laius * korgus / 8 < sonumKahendSysteemis.length()) {
 			System.out.println("Sõnum on liiga pikk!");
 			return false;
@@ -48,16 +45,10 @@ public class SonumiPeitja {
 		Random arv = new Random();
 		int suvalineArv = arv.nextInt(21);
 		
-		//suvalise arvu kontroll (ka koos syso'ga ära kustutada)
-		System.out.println(suvalineArv);
-		
 		for (int y = 0; y < sonumiMassiiv.length; y++) {
 			for (int x = 0; x < 8; x++) {
 				int rida = (y * 8 + x + suvalineArv) / laius;
 				int veerg = (y * 8 + x + suvalineArv) % laius;
-				
-				//piksli võtmise kontroll (koos syso'ga ära kustutada)
-				System.out.println(rida+";"+veerg);
 
 				Color piksel = new Color(pikslid[rida][veerg]);
 				int punaneVarv = piksel.getRed();
