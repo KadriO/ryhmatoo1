@@ -32,6 +32,7 @@ public class PildiUtiliit {
 	// Meetod koostab pildi pikslitest kahemõõtmelise massiivi
 	public int[][] piltPiksliteks(String failiNimi) throws IOException {
 		File fail = new File(failiNimi);
+		//juurdepääs pildi andmetele
 		BufferedImage pilt = ImageIO.read(fail);
 		int laius = pilt.getWidth();
 		int korgus = pilt.getHeight();
@@ -39,7 +40,7 @@ public class PildiUtiliit {
 		int[][] pikslid = new int[korgus][laius];
 		for (int y = 0; y < korgus; y++) {
 			int[] pikslirida = new int[laius];
-			//Lisab igasse sisemisse massiivi ühe pildirea pikslite RGB väärtuse
+			//Lisab igasse sisemisse massiivi ühes pildireas asuvate pikslite RGB väärtuse
 			for (int x = 0; x < laius; x++) {
 				pikslirida[x] = pilt.getRGB(x, y);
 			}
@@ -51,7 +52,7 @@ public class PildiUtiliit {
 	public void salvestaPikslidPildina(int[][] pikslid, String failiNimi) throws IOException {
 		int laius = pikslid[0].length;
 		int korgus = pikslid.length;
-		//Pikslite RGB väärtustest pildi koostamine
+		//Pikslite RGB väärtustest pildi koostamine kasutades piksli koordinaate ja RGB väärtust
 		BufferedImage pilt = new BufferedImage(laius, korgus, BufferedImage.TYPE_INT_ARGB);
 		for(int y=0; y<korgus; y++){
 			for(int x=0; x<laius; x++){
@@ -59,7 +60,6 @@ public class PildiUtiliit {
 			} 
 		}
 		//Uue pildifaili nimetamine ja salvestamine
-	
 		File fail = new File(failiNimi);
 		String lyhikeFailiNimi = fail.getName();
 		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
