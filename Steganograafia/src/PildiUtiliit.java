@@ -48,6 +48,7 @@ public class PildiUtiliit {
 		return pikslid;
 	}
 	
+	//Pikslite pildina salvestamine
 	public void salvestaPikslidPildina(int[][] pikslid, String failiNimi) throws IOException {
 		int laius = pikslid[0].length;
 		int korgus = pikslid.length;
@@ -58,8 +59,8 @@ public class PildiUtiliit {
 				pilt.setRGB(x, y, pikslid[y][x]);
 			} 
 		}
+		
 		//Uue pildifaili nimetamine ja salvestamine
-	
 		File fail = new File(failiNimi);
 		String lyhikeFailiNimi = fail.getName();
 		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);

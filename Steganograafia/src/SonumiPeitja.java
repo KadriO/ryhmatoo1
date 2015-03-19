@@ -27,9 +27,9 @@ public class SonumiPeitja {
 		this.sonum = sonum;
 	}
 
-	// peidab sõnumi pildi punase värvi kõige vähima kaaluga bittidesse (LSB)
-	// tagastab true, kui sõnumi punasesse peitmine õnnestub
-	// tagastab false, kui sõnum on liiga pikk
+	// Peidab sõnumi pildi punase värvi kõige vähima kaaluga bittidesse(LSB)
+	// Meetod tagastab true, kui sõnumi punasesse peitmine õnnestub
+	// Meetod tagastab false, kui sõnum on liiga pikk
 	public boolean peidaSonumPunasesse() {
 		int laius = pikslid[0].length;
 		int korgus = pikslid.length;
@@ -43,7 +43,7 @@ public class SonumiPeitja {
 
 		String[] sonumiMassiiv = sonumKahendSysteemis.split(" ");
 
-		//leiame juhusliku arvu, millest alates alustame sõnumi peitmist pikslitesse
+		//Leiame juhusliku arvu, millest alates alustab sõnumi peitmist pikslitesse
 		Random arv = new Random();
 		int suvalineArv = arv.nextInt(21);
 		
@@ -63,7 +63,7 @@ public class SonumiPeitja {
 				int rohelineVarv = piksel.getGreen();
 				int sinineVarv = piksel.getBlue();
 
-				//loome muudetud piksli ja paneme tagasi pikslite massiivi
+				//Loob muudetud piksli ja paneb tagasi pikslite massiivi
 				Color muudetudPiksel = new Color(punaseUusVaartus,
 						rohelineVarv, sinineVarv);
 				pikslid[rida][veerg] = muudetudPiksel.getRGB();
