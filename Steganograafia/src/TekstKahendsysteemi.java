@@ -3,7 +3,7 @@ public class TekstKahendsysteemi {
 
 	public static String messageKahendsysteemi(String s) {
 		//Lisame alguse ja lõpu sümbolid
-		s = "¤" + s + "~";
+		s = "~~" + s + "~~";
 		
 		//Teeme baidimassiivi
 		byte[] baidid = s.getBytes();
