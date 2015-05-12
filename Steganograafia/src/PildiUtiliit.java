@@ -63,9 +63,22 @@ public class PildiUtiliit {
 		
 		//Uue pildifaili nimetamine ja salvestamine
 		File fail = new File(failiNimi);
-		String lyhikeFailiNimi = fail.getName();
+		File tulemusFail = new File(getKrypteeritudNimi(fail));
+		ImageIO.write(pilt, getFailiLaiend(fail), tulemusFail);
+	}
+	
+	public String getFailiLaiend(File sisendFail) {
+		String lyhikeFailiNimi = sisendFail.getName();
 		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
-		File tulemusFail = new File(fail.getParent(), "krypteeritud_" + lyhikeFailiNimi);
-		ImageIO.write(pilt, failiLaiend, tulemusFail);
+		return failiLaiend;
+		
+	}
+	public String getKrypteeritudNimi(File sisendFail) {
+		String lyhikeFailiNimi = sisendFail.getName();
+		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
+		File tulemusFail = new File(sisendFail.getParent(), "krypteeritud_" + lyhikeFailiNimi);
+		return tulemusFail.getAbsolutePath();
+		
+		
 	}
 }
