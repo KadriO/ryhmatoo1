@@ -298,21 +298,31 @@ public class Kasutajaliides extends Application {
 
 	public void dekodeerimisAken() {
 		GridPane gpdeko = new GridPane();
-		gpdeko.setPadding(new Insets(40, 0, 0, 50));
+		gpdeko.setPadding(new Insets(20, 40, 20, 40));
 		gpdeko.setHgap(5);
 		gpdeko.setVgap(5);
+		
+		Text tekst2 = new Text("Otsi enda arvutist pilt, mida soovid dekodeerida.");
+		tekst2.setFont(Font.font("Verdana", FontWeight.NORMAL, 15));
+		TextFlow jutt2 = new TextFlow(tekst2);
+		jutt2.setTextAlignment(TextAlignment.JUSTIFY);
+		gpdeko.add(jutt2, 0, 0);
 
-		Scene stseen2 = new Scene(gpdeko, 300, 150);
+		Scene stseen2 = new Scene(gpdeko, 400, 200);
 
 		Button btPilt = new Button("Vali pilt");
 
-		gpdeko.setMargin(btPilt, new Insets(10, 0, 0, 0));
+//		gpdeko.setMargin(btPilt, new Insets(10, 0, 0, 0));
 
-		gpdeko.add(btPilt, 1, 2);
+		gpdeko.add(btPilt, 0, 1);
 
 		Stage secondStage = new Stage();
-		secondStage.setTitle("Second Stage");
+		secondStage.setTitle("Sõnumi dekodeerimine");
 		secondStage.setScene(stseen2);
+		//minimaalse akna loomine
+		secondStage.setMinWidth(400);
+		secondStage.setMinHeight(200);
+		
 		secondStage.show();
 		btPilt.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
@@ -326,7 +336,7 @@ public class Kasutajaliides extends Application {
 						piltPikslitena = p1.piltPiksliteks(file.getAbsolutePath());
 						SonumiDekodeerija sonumiDekodeerija = new SonumiDekodeerija(piltPikslitena);
 						TextField txt = new TextField(sonumiDekodeerija.loeSonumPunasest(piltPikslitena));
-						gpdeko.add(txt, 1, 3);
+						gpdeko.add(txt, 0, 2);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
