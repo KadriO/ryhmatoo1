@@ -263,6 +263,7 @@ public class Kasutajaliides extends Application {
 			
 			Button nupp = new Button("Algusesse");
 			//bp4.setRight(nupp);
+			nupp.setPadding(new Insets(20, gp.getWidth()/2, 10, gp.getWidth()/2));
 			gp.add(nupp, 0, 2);
 			
 			//TextArea txt = new TextArea("Peitmine õnnestus!");
@@ -278,6 +279,10 @@ public class Kasutajaliides extends Application {
 			Stage lava3 = new Stage();
 			lava3.setTitle("Sõnumi peitmine");
 			lava3.setScene(stseen3);
+			//akna minimaalsed mõõtmed
+			lava3.setMinHeight(300);
+			lava3.setMinWidth(500);
+			
 			lava.close();
 			lava3.show();
 			
