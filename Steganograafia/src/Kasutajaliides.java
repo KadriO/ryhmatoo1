@@ -75,8 +75,6 @@ public class Kasutajaliides extends Application {
 		kysimus.setTextAlignment(TextAlignment.JUSTIFY);
 		kysimus.setPadding(new Insets(10, 10, 15, 10));
 		bp3.setTop(kysimus);
-		
-		
 
 		final ToggleGroup valikud = new ToggleGroup();
 		RadioButton rb1 = new RadioButton("Kodeerimine");
@@ -245,17 +243,54 @@ public class Kasutajaliides extends Application {
 			}
 
 			BorderPane bp3 = new BorderPane();
-			TextArea txt = new TextArea("Peitmine õnnestus!");
-			bp3.setCenter(txt);
-			TextArea txt1 = new TextArea("Fail asub aadressil: " + p1.getKrypteeritudNimi(file));
-			bp3.setBottom(txt1);
+			Text tekst = new Text("Peitmine õnnestus!");
+			tekst.setFont(Font.font("Helvetica", FontWeight.BOLD, 30));
+			TextFlow jutt = new TextFlow(tekst);
+			jutt.setTextAlignment(TextAlignment.CENTER);
+			jutt.setPadding(new Insets(10, 0, 15, 0));
+			bp3.setTop(jutt);
+			
+			GridPane gp = new GridPane();
+			bp3.setCenter(gp);
+			
+			Text tekst2 = new Text("Fail asub aadressil: ");
+			tekst2.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
+			TextFlow jutt2 = new TextFlow(tekst2);
+			jutt2.setTextAlignment(TextAlignment.LEFT);
+			jutt2.setPadding(new Insets(20, 0, 10, 0));
+			//bp4.setTop(jutt2);
+			gp.add(jutt2, 0, 0);
+			
+			Button nupp = new Button("Algusesse");
+			//bp4.setRight(nupp);
+			gp.add(nupp, 0, 2);
+			
+			//TextArea txt = new TextArea("Peitmine õnnestus!");
+			//bp3.setCenter(txt);
+			TextArea txt1 = new TextArea(p1.getKrypteeritudNimi(file));
+			txt1.setPrefHeight(25);
+			txt1.setMaxHeight(25);
+			txt1.setMinHeight(25);
+			//bp4.setCenter(txt1);
+			gp.add(txt1, 0, 1);
 
-			Scene stseen3 = new Scene(bp3, 500, 500);
+			Scene stseen3 = new Scene(bp3, 500, 300);
 			Stage lava3 = new Stage();
-			lava3.setTitle("Lõpp");
+			lava3.setTitle("Sõnumi peitmine");
 			lava3.setScene(stseen3);
 			lava.close();
 			lava3.show();
+			
+			//nupu "Algusesse" funktsioon
+			nupp.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					lava3.close();
+					Stage peaLava = new Stage();
+					start(peaLava);
+				}
+				
+			});
 		}
 	}
 
