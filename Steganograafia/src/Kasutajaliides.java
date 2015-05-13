@@ -99,7 +99,7 @@ public class Kasutajaliides extends Application {
 		valikud.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 			@Override
 			public void changed(ObservableValue<? extends Toggle> ov, Toggle t, Toggle t1) {
-
+				
 				RadioButton chk = (RadioButton) t1.getToggleGroup().getSelectedToggle();
 				if (chk.getText().equals("Kodeerimine")) {
 					peaLava.close();
@@ -116,8 +116,8 @@ public class Kasutajaliides extends Application {
 
 		Scene stseen1 = new Scene(bp1, 400, 300);
 		//akna minimaalsed mõõtmed
-		peaLava.setMinHeight(350);
-		peaLava.setMinWidth(450);
+		peaLava.setMinHeight(300);
+		peaLava.setMinWidth(400);
 		peaLava.setTitle("Steganograafia");
 		peaLava.setScene(stseen1);
 		peaLava.show();
@@ -194,8 +194,8 @@ public class Kasutajaliides extends Application {
 
 		Stage secondStage = new Stage();
 		//akna minimaalsed mõõtmed
-		secondStage.setMinHeight(350);
-		secondStage.setMinWidth(450);
+		secondStage.setMinHeight(300);
+		secondStage.setMinWidth(400);
 		
 		secondStage.setTitle("Sõnumi peitmine");
 		secondStage.setScene(stseen2);
