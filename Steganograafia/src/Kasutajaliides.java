@@ -36,9 +36,6 @@ public class Kasutajaliides extends Application {
 	@Override
 	public void start(Stage peaLava) {
 		BorderPane bp1 = new BorderPane();
-		// TextArea sissejuhatus = new TextArea("Sissejuhatus"); // teistsugune
-		// tekst
-		// bp1.setTop(sissejuhatus);
 
 		// Loon teise paani, mille panen esimese keskkohta, et võimaldada teksti
 		// paigutust sinna. (Vastasel juhul nupud varjavad teksti ära)
@@ -51,7 +48,7 @@ public class Kasutajaliides extends Application {
 
 		// Sissejuhatava pealkirja loomine (eelmisega oli võimalik kasutajal
 		// tekst ära kustutada)
-		Text pealkiri = new Text("Sissejuhatus");//muuta
+		Text pealkiri = new Text("Steganograafia");//muuta
 		pealkiri.setFont(Font.font("Helvetica", FontWeight.BOLD, 30));
 		TextFlow jutt = new TextFlow(pealkiri);
 		jutt.setTextAlignment(TextAlignment.CENTER);
@@ -223,7 +220,6 @@ public class Kasutajaliides extends Application {
 				piltPikslitena = p1.piltPiksliteks(file.getAbsolutePath());
 				sonumiPeitja = new SonumiPeitja(piltPikslitena, sonum);
 				boolean onnestus = sonumiPeitja.peidaSonumPunasesse();
-//				p1.salvestaPikslidPildina(sonumiPeitja.getPikslid(), file.getAbsolutePath());
 				 
 				 if (!onnestus) {
 				 Alert a = new Alert(AlertType.ERROR);
@@ -236,7 +232,6 @@ public class Kasutajaliides extends Application {
 				 p1.salvestaPikslidPildina(sonumiPeitja.getPikslid(),
 				 file.getAbsolutePath());
 				
-				
 				 }
 			} catch (IOException e2) {
 				e2.printStackTrace();
@@ -247,7 +242,7 @@ public class Kasutajaliides extends Application {
 			tekst.setFont(Font.font("Helvetica", FontWeight.BOLD, 30));
 			TextFlow jutt = new TextFlow(tekst);
 			jutt.setTextAlignment(TextAlignment.CENTER);
-			jutt.setPadding(new Insets(10, 0, 15, 0));
+			jutt.setPadding(new Insets(10, 0, 30, 0));
 			bp3.setTop(jutt);
 			
 			GridPane gp = new GridPane();
@@ -257,14 +252,14 @@ public class Kasutajaliides extends Application {
 			tekst2.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
 			TextFlow jutt2 = new TextFlow(tekst2);
 			jutt2.setTextAlignment(TextAlignment.LEFT);
-			jutt2.setPadding(new Insets(20, 0, 10, 0));
-			//bp4.setTop(jutt2);
+			jutt2.setPadding(new Insets(30, 0, 10, 10));
 			gp.add(jutt2, 0, 0);
 			
 			Button nupp = new Button("Algusesse");
-			//bp4.setRight(nupp);
-			nupp.setPadding(new Insets(20, gp.getWidth()/2, 10, gp.getWidth()/2));
-			gp.add(nupp, 0, 2);
+			HBox hbox = new HBox();
+			hbox.getChildren().add(nupp);
+			hbox.setPadding(new Insets(20, 10, 10, 420));
+			gp.add(hbox, 0, 2);
 			
 			//TextArea txt = new TextArea("Peitmine õnnestus!");
 			//bp3.setCenter(txt);
@@ -272,8 +267,10 @@ public class Kasutajaliides extends Application {
 			txt1.setPrefHeight(25);
 			txt1.setMaxHeight(25);
 			txt1.setMinHeight(25);
-			//bp4.setCenter(txt1);
-			gp.add(txt1, 0, 1);
+			HBox hbox2 = new HBox();
+			hbox2.getChildren().add(txt1);
+			hbox2.setPadding(new Insets(0, 10, 0, 10));
+			gp.add(hbox2, 0, 1);
 
 			Scene stseen3 = new Scene(bp3, 500, 300);
 			Stage lava3 = new Stage();
@@ -281,7 +278,7 @@ public class Kasutajaliides extends Application {
 			lava3.setScene(stseen3);
 			//akna minimaalsed mõõtmed
 			lava3.setMinHeight(300);
-			lava3.setMinWidth(500);
+			lava3.setMinWidth(550);
 			
 			lava.close();
 			lava3.show();
