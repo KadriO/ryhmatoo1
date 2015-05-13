@@ -258,15 +258,15 @@ public class Kasutajaliides extends Application {
 			Button nupp = new Button("Algusesse");
 			HBox hbox = new HBox();
 			hbox.getChildren().add(nupp);
-			hbox.setPadding(new Insets(20, 10, 10, 420));
+			hbox.setPadding(new Insets(20, 10, 10, 350));
 			gp.add(hbox, 0, 2);
 			
 			//TextArea txt = new TextArea("Peitmine õnnestus!");
 			//bp3.setCenter(txt);
 			TextArea txt1 = new TextArea(p1.getKrypteeritudNimi(file));
 			txt1.setPrefHeight(25);
-			txt1.setMaxHeight(25);
-			txt1.setMinHeight(25);
+			txt1.setMaxHeight(50);
+			txt1.setMinHeight(50);
 			HBox hbox2 = new HBox();
 			hbox2.getChildren().add(txt1);
 			hbox2.setPadding(new Insets(0, 10, 0, 10));
@@ -278,7 +278,7 @@ public class Kasutajaliides extends Application {
 			lava3.setScene(stseen3);
 			//akna minimaalsed mõõtmed
 			lava3.setMinHeight(300);
-			lava3.setMinWidth(550);
+			lava3.setMinWidth(500);
 			
 			lava.close();
 			lava3.show();
