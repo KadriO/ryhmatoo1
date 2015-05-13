@@ -150,10 +150,10 @@ public class Kasutajaliides extends Application {
 //		gp.prefHeightProperty().bind(stseen2.heightProperty());
 //		gp.prefWidthProperty().bind(stseen2.widthProperty());
 
-		Label labelike = new Label("Kirjuta sõnum siia:");
-		labelike.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
+		Label sõnumPeitmiseks = new Label("Kirjuta sõnum siia:");
+		sõnumPeitmiseks.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
 
-		//gp.setHalignment(labelike, HPos.RIGHT);
+		//gp.setHalignment(sõnumPeitmiseks, HPos.RIGHT);
 		TextField tekst = new TextField();
 		
 		//panen tekstilahtri ja sildi ühele vertikaalile
@@ -163,16 +163,16 @@ public class Kasutajaliides extends Application {
 //		hbox.prefWidthProperty().bind(stseen2.widthProperty());
 //		hbox.prefHeightProperty().bind(stseen2.heightProperty());
 		
-		labelike.setAlignment(Pos.CENTER_LEFT);
-		labelike.setMinWidth(140);
-		//labelike.setPadding(new Insets(0, 10, 0, 0));
-		hbox.getChildren().add(labelike);
+		sõnumPeitmiseks.setAlignment(Pos.CENTER_LEFT);
+		sõnumPeitmiseks.setMinWidth(140);
+		//sõnumPeitmiseks.setPadding(new Insets(0, 10, 0, 0));
+		hbox.getChildren().add(sõnumPeitmiseks);
 		tekst.setAlignment(Pos.CENTER_RIGHT);
 		tekst.setMinWidth(150);
 		hbox.getChildren().add(tekst);
-		System.out.println("sildi laius: "+labelike.getMinWidth());
+		System.out.println("sildi laius: "+sõnumPeitmiseks.getMinWidth());
 		System.out.println("lahtri laius: "+tekst.getMinWidth());
-		double hboxParemVasakJoondus = gp.getWidth()/2-labelike.getMinWidth()/2 - tekst.getMinWidth()/2-20;
+		double hboxParemVasakJoondus = gp.getWidth()/2-sõnumPeitmiseks.getMinWidth()/2 - tekst.getMinWidth()/2-20;
 		hbox.setPadding(new Insets(0, hboxParemVasakJoondus, 0, hboxParemVasakJoondus));
 		
 		Button btPilt = new Button("Vali pilt");
@@ -192,24 +192,24 @@ public class Kasutajaliides extends Application {
 		gp.add(hbox, 0, 1);
 		gp.add(hbox2, 0, 2);
 
-		Stage secondStage = new Stage();
+		Stage teineLava = new Stage();
 		//akna minimaalsed mõõtmed
-		secondStage.setMinHeight(300);
-		secondStage.setMinWidth(400);
+		teineLava.setMinHeight(300);
+		teineLava.setMinWidth(400);
 		
-		secondStage.setTitle("Sõnumi peitmine");
-		secondStage.setScene(stseen2);
-		secondStage.show();
+		teineLava.setTitle("Sõnumi peitmine");
+		teineLava.setScene(stseen2);
+		teineLava.show();
 		btPilt.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(final ActionEvent e) {
-				onPiltValitud(secondStage, tekst.getText());
+				kodeerimisAken2(teineLava, tekst.getText());
 			}
 		});
 
 	}
 
-	public void onPiltValitud(Stage lava, String sonum) {
+	public void kodeerimisAken2(Stage lava, String sonum) {
 		FileChooser fc = new FileChooser();
 		File file = fc.showOpenDialog(lava);
 		if (file != null) {
@@ -273,21 +273,21 @@ public class Kasutajaliides extends Application {
 			gp.add(hbox2, 0, 1);
 
 			Scene stseen3 = new Scene(bp3, 500, 300);
-			Stage lava3 = new Stage();
-			lava3.setTitle("Sõnumi peitmine");
-			lava3.setScene(stseen3);
+			Stage kolmasLava = new Stage();
+			kolmasLava.setTitle("Sõnumi peitmine");
+			kolmasLava.setScene(stseen3);
 			//akna minimaalsed mõõtmed
-			lava3.setMinHeight(300);
-			lava3.setMinWidth(500);
+			kolmasLava.setMinHeight(300);
+			kolmasLava.setMinWidth(500);
 			
 			lava.close();
-			lava3.show();
+			kolmasLava.show();
 			
 			//nupu "Algusesse" funktsioon
 			nupp.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-					lava3.close();
+					kolmasLava.close();
 					Stage peaLava = new Stage();
 					start(peaLava);
 				}
@@ -319,19 +319,19 @@ public class Kasutajaliides extends Application {
 		peidetudSõnum.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
 
 
-		Stage secondStage = new Stage();
-		secondStage.setTitle("Sõnumi dekodeerimine");
-		secondStage.setScene(stseen2);
+		Stage teineLava = new Stage();
+		teineLava.setTitle("Sõnumi dekodeerimine");
+		teineLava.setScene(stseen2);
 		//minimaalse akna loomine
-		secondStage.setMinWidth(400);
-		secondStage.setMinHeight(200);
+		teineLava.setMinWidth(400);
+		teineLava.setMinHeight(200);
 		
-		secondStage.show();
+		teineLava.show();
 		btPilt.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(final ActionEvent e) {
 				FileChooser fc = new FileChooser();
-				File file = fc.showOpenDialog(secondStage);
+				File file = fc.showOpenDialog(teineLava);
 				if (file != null) {
 					PildiUtiliit p1 = new PildiUtiliit(file.getAbsolutePath());
 					int[][] piltPikslitena;
