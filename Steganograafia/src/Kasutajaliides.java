@@ -317,6 +317,11 @@ public class Kasutajaliides extends Application {
 		gpdeko.add(btPilt, 0, 1);
 		Label peidetudSõnum = new Label("Peidetud sõnum oli:");
 		peidetudSõnum.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
+		
+		Button nupp = new Button("Algusesse");
+		HBox hbox = new HBox();
+		hbox.getChildren().add(nupp);
+		hbox.setPadding(new Insets(20, 10, 10, 200));
 
 
 		Stage teineLava = new Stage();
@@ -325,6 +330,17 @@ public class Kasutajaliides extends Application {
 		//minimaalse akna loomine
 		teineLava.setMinWidth(400);
 		teineLava.setMinHeight(200);
+		
+		//nupu "Algusesse" funktsioon
+		nupp.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				teineLava.close();
+				Stage peaLava = new Stage();
+				start(peaLava);
+			}
+			
+		});
 		
 		teineLava.show();
 		btPilt.setOnAction(new EventHandler<ActionEvent>() {
@@ -341,6 +357,8 @@ public class Kasutajaliides extends Application {
 						TextField txt = new TextField(sonumiDekodeerija.loeSonumPunasest(piltPikslitena));
 						gpdeko.add(peidetudSõnum, 0, 2);
 						gpdeko.add(txt, 0, 3);
+						gpdeko.add(hbox, 0, 4);
+						
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
