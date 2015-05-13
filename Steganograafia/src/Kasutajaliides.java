@@ -315,6 +315,9 @@ public class Kasutajaliides extends Application {
 //		gpdeko.setMargin(btPilt, new Insets(10, 0, 0, 0));
 
 		gpdeko.add(btPilt, 0, 1);
+		Label peidetudSõnum = new Label("Peidetud sõnum oli:");
+		peidetudSõnum.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
+
 
 		Stage secondStage = new Stage();
 		secondStage.setTitle("Sõnumi dekodeerimine");
@@ -336,7 +339,8 @@ public class Kasutajaliides extends Application {
 						piltPikslitena = p1.piltPiksliteks(file.getAbsolutePath());
 						SonumiDekodeerija sonumiDekodeerija = new SonumiDekodeerija(piltPikslitena);
 						TextField txt = new TextField(sonumiDekodeerija.loeSonumPunasest(piltPikslitena));
-						gpdeko.add(txt, 0, 2);
+						gpdeko.add(peidetudSõnum, 0, 2);
+						gpdeko.add(txt, 0, 3);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
