@@ -391,6 +391,7 @@ public class Kasutajaliides extends Application {
 						erindiAken("Vale faililaiendi erind", e2.getMessage(), false, lava);
 					}
 				}
+				
 			}
 		});
 	}

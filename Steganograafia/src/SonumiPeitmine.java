@@ -25,7 +25,6 @@ public class SonumiPeitmine {
 
 				if (fail.exists()) {
 					PildiUtiliit p1 = new PildiUtiliit(failiNimi);
-
 					int[][] piltPikslitena = p1.piltPiksliteks(failiNimi);
 					SonumiPeitja sonumiPeitja = new SonumiPeitja(piltPikslitena, sonum);
 					boolean onnestus = sonumiPeitja.peidaSonumPunasesse();
