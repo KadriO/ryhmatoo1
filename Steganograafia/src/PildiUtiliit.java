@@ -75,7 +75,7 @@ public class PildiUtiliit {
 	}
 	public String getKrypteeritudNimi(File sisendFail) {
 		String lyhikeFailiNimi = sisendFail.getName();
-		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
+//		String failiLaiend = lyhikeFailiNimi.substring(lyhikeFailiNimi.lastIndexOf(".") + 1);
 		File tulemusFail = new File(sisendFail.getParent(), "krypteeritud_" + lyhikeFailiNimi);
 		return tulemusFail.getAbsolutePath();
 		

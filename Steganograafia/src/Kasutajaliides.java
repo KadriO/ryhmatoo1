@@ -31,7 +31,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class Kasutajaliides extends Application {
-
+	// erindi akna loomine
 	public void erindiAken(String aknaNimi, String kuvatavTekst, boolean kasKodeerimine, Stage lava) {
 		GridPane gp = new GridPane();
 		gp.setPadding(new Insets(10, 20, 10, 20));
@@ -66,13 +66,15 @@ public class Kasutajaliides extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				lava.close();
-				if(kasKodeerimine) kodeerimisAken();
-				else dekodeerimisAken();
-				
+				if (kasKodeerimine)
+					kodeerimisAken();
+				else
+					dekodeerimisAken();
+
 			}
 		});
 	}
-
+	// meetod tekstivälja loomiseks
 	public TextFlow looTekstiväli(String tekstiväli, int kirjaSuurus, String kirjaPaksus, String joondus) {
 		Text kiri = new Text(tekstiväli);
 		if (kirjaPaksus.equalsIgnoreCase("bold"))
@@ -91,14 +93,11 @@ public class Kasutajaliides extends Application {
 
 	@Override
 	public void start(Stage peaLava) {
+		// aknale sisu loomine
 		BorderPane bp1 = new BorderPane();
-
-		// Loon teise paani, mille panen esimese keskkohta, et võimaldada teksti
-		// paigutust sinna. (Vastasel juhul nupud varjavad teksti ära)
 		BorderPane bp2 = new BorderPane();
 		bp1.setCenter(bp2);
 
-		// Kolmanda paani loomine, kuhu sisestatakse kysimus ja raadionupud
 		BorderPane bp3 = new BorderPane();
 		bp2.setCenter(bp3);
 
@@ -106,7 +105,7 @@ public class Kasutajaliides extends Application {
 		bp1.setTop(pealkiri);
 
 		TextFlow tutvustavJutt = looTekstiväli(
-				"Käesolev programm võimaldab sõnumi peitmist pilti ja sõnumi lugemist pildist. "
+				"Käesolev programm võimaldab sõnumi peitmist pilti ja selle lugemist pildist. "
 						+ "Kasutada saab pilte, mille laiendiks on .png, peitmine toimub ainult punasesse värvi "
 						+ "ja täpitähti kasutada ei saa.", 15, "normal", "justify");
 		tutvustavJutt.setPadding(new Insets(10, 10, 5, 10));
@@ -116,7 +115,7 @@ public class Kasutajaliides extends Application {
 				"normal", "justify");
 		kysimus.setPadding(new Insets(10, 10, 15, 10));
 		bp3.setTop(kysimus);
-
+		// raadionuppude loomine ja paigutamine
 		final ToggleGroup valikud = new ToggleGroup();
 		RadioButton rb1 = new RadioButton("Kodeerimine");
 		rb1.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
@@ -124,13 +123,12 @@ public class Kasutajaliides extends Application {
 		RadioButton rb2 = new RadioButton("Dekodeerimine");
 		rb2.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
 		rb2.setToggleGroup(valikud);
-
 		VBox vbox = new VBox();
 		vbox.getChildren().add(rb1);
 		vbox.getChildren().add(rb2);
 		vbox.setPadding(new Insets(0, 10, 5, 10));
 		bp3.setCenter(vbox);
-
+		// akna suuruse muutumise sidumine akna elementidega
 		bp1.prefHeightProperty().bind(peaLava.heightProperty());
 		bp1.prefWidthProperty().bind(peaLava.widthProperty());
 		bp2.prefHeightProperty().bind(bp1.heightProperty());
@@ -157,16 +155,17 @@ public class Kasutajaliides extends Application {
 		Scene stseen = new Scene(bp1, 400, 300);
 		peaLava.setMinHeight(300);
 		peaLava.setMinWidth(400);
-		peaLava.setTitle("Steganograafia");
+		peaLava.setTitle("Esileht");
 		peaLava.setScene(stseen);
 		peaLava.show();
 	}
+
 	// sõnumi kirjutamine ning pildi valimine
 	public void kodeerimisAken() {
 		GridPane gp = new GridPane();
 		gp.setPadding(new Insets(30, 20, 0, 20));
 		Stage lava = new Stage();
-
+		// aknale sisu loomine
 		TextFlow tutvustavTekst = looTekstiväli(
 				"Kirjuta lahtrisse sõnum, mida soovid peita (täpitähti kasutamata) ja vali sobiv pilt (png laiendiga).",
 				15, "normal", "justify");
@@ -183,12 +182,12 @@ public class Kasutajaliides extends Application {
 		hbox.getChildren().add(tekst);
 		hbox.setPadding(new Insets(15, 0, 20, 0));
 
-		Button btPilt = new Button("Vali pilt");
-		btPilt.setMinWidth(100);
+		Button nuppPilt = new Button("Vali pilt");
+		nuppPilt.setMinWidth(100);
 		HBox hbox2 = new HBox();
 		hbox2.setAlignment(Pos.CENTER);
-		hbox2.getChildren().add(btPilt);
-
+		hbox2.getChildren().add(nuppPilt);
+		// akna suuruse muutumise sidumine akna elementidega
 		gp.prefHeightProperty().bind(lava.heightProperty());
 		gp.prefWidthProperty().bind(lava.widthProperty());
 		hbox.prefWidthProperty().bind(lava.widthProperty());
@@ -206,13 +205,14 @@ public class Kasutajaliides extends Application {
 		lava.setTitle("Sõnumi peitmine");
 		lava.setScene(stseen);
 		lava.show();
-		btPilt.setOnAction(new EventHandler<ActionEvent>() {
+		nuppPilt.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(final ActionEvent e) {
 				kodeerimisAken2(lava, tekst.getText());
 			}
 		});
 	}
+
 	// pildi valimine, pildi ja sõnumi kontroll ning sõnumi peitmine pilti
 	public void kodeerimisAken2(Stage lava, String sonum) {
 		FileChooser fc = new FileChooser();
@@ -249,7 +249,7 @@ public class Kasutajaliides extends Application {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-
+				// aknale sisu loomine
 				BorderPane bp3 = new BorderPane();
 				TextFlow jutt = looTekstiväli("Peitmine õnnestus!", 30, "bold", "center");
 				jutt.setPadding(new Insets(10, 0, 30, 0));
@@ -274,7 +274,7 @@ public class Kasutajaliides extends Application {
 				hbox2.getChildren().add(txt1);
 				hbox2.setPadding(new Insets(0, 10, 0, 10));
 				gp.add(hbox2, 0, 1);
-
+				// akna suuruse muutumise sidumine akna elementidega
 				bp3.prefHeightProperty().bind(lava2.heightProperty());
 				bp3.prefWidthProperty().bind(lava2.widthProperty());
 				gp.prefHeightProperty().bind(lava2.heightProperty());
@@ -313,13 +313,14 @@ public class Kasutajaliides extends Application {
 			erindiAken("Vale faililaiendi erind", e.getMessage(), true, lava);
 		}
 	}
+
 	// pildist sõnumi murdmine
 	public void dekodeerimisAken() {
 		GridPane gp = new GridPane();
 		gp.setPadding(new Insets(20, 40, 20, 40));
 		Scene stseen = new Scene(gp, 400, 300);
 		Stage lava = new Stage();
-
+		// akna suuruse muutumise sidumine
 		gp.prefHeightProperty().bind(lava.heightProperty());
 		gp.prefWidthProperty().bind(lava.widthProperty());
 
@@ -345,7 +346,7 @@ public class Kasutajaliides extends Application {
 
 		Label peidetudSõnum = new Label("Peidetud sõnum oli:");
 		peidetudSõnum.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
-
+		// akna suuruse muutumise sidumine
 		peidetudSõnum.prefHeightProperty().bind(lava.heightProperty());
 		peidetudSõnum.prefWidthProperty().bind(lava.widthProperty());
 
@@ -391,7 +392,7 @@ public class Kasutajaliides extends Application {
 						erindiAken("Vale faililaiendi erind", e2.getMessage(), false, lava);
 					}
 				}
-				
+
 			}
 		});
 	}
