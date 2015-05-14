@@ -161,7 +161,7 @@ public class Kasutajaliides extends Application {
 		peaLava.setScene(stseen);
 		peaLava.show();
 	}
-
+	// sõnumi kirjutamine ning pildi valimine
 	public void kodeerimisAken() {
 		GridPane gp = new GridPane();
 		gp.setPadding(new Insets(30, 20, 0, 20));
@@ -172,13 +172,13 @@ public class Kasutajaliides extends Application {
 				15, "normal", "justify");
 		tutvustavTekst.setPadding(new Insets(10, 0, 15, 0));
 
-		Label labelike = new Label("Kirjuta sõnum siia:");
-		labelike.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
+		Label sõnumPeitmiseks = new Label("Kirjuta sõnum siia:");
+		sõnumPeitmiseks.setFont(Font.font("Helvetica", FontWeight.NORMAL, 15));
 		TextField tekst = new TextField(); // sõnumi sisestuse lahter
 		HBox hbox = new HBox();
-		labelike.setAlignment(Pos.CENTER_LEFT);
-		labelike.setPadding(new Insets(0, 10, 0, 0));
-		hbox.getChildren().add(labelike);
+		sõnumPeitmiseks.setAlignment(Pos.CENTER_LEFT);
+		sõnumPeitmiseks.setPadding(new Insets(0, 10, 0, 0));
+		hbox.getChildren().add(sõnumPeitmiseks);
 		tekst.setAlignment(Pos.CENTER_RIGHT);
 		hbox.getChildren().add(tekst);
 		hbox.setPadding(new Insets(15, 0, 20, 0));
@@ -209,12 +209,12 @@ public class Kasutajaliides extends Application {
 		btPilt.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(final ActionEvent e) {
-				onPiltValitud(lava, tekst.getText());
+				kodeerimisAken2(lava, tekst.getText());
 			}
 		});
 	}
-
-	public void onPiltValitud(Stage lava, String sonum) {
+	// pildi valimine, pildi ja sõnumi kontroll ning sõnumi peitmine pilti
+	public void kodeerimisAken2(Stage lava, String sonum) {
 		FileChooser fc = new FileChooser();
 		File file = fc.showOpenDialog(lava);
 		Stage lava2 = new Stage();
@@ -313,7 +313,7 @@ public class Kasutajaliides extends Application {
 			erindiAken("Vale faililaiendi erind", e.getMessage(), true, lava);
 		}
 	}
-
+	// pildist sõnumi murdmine
 	public void dekodeerimisAken() {
 		GridPane gp = new GridPane();
 		gp.setPadding(new Insets(20, 40, 20, 40));
